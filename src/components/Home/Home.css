@@ -1,0 +1,10 @@
+.bio {
+  background-color: rgb(212, 212, 212);
+  float: right;
+}
+
+.headshot {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
