@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
+import './Chart.css'
 
 class Chart extends Component{
 
   render(){
     return(
-      <div>
+      <div className='chartCont'>
         Chart
       </div>
     )

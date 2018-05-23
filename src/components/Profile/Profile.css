@@ -1,0 +1,12 @@
+
+.profMain {
+  display: flex;
+  height: 200vh;
+  justify-content: flex-end;
+}
+
+.profRight{
+  display: flex;
+  flex-direction: column;
+  margin-top: 79px;
+}

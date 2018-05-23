@@ -1,0 +1,63 @@
+
+.profCont {
+  background-color: rgba(255, 255, 255, 0.671);
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  border-radius: 10px;
+  /* margin: 40px; */
+  width: 25vw;
+  height: 730px;
+  position: fixed;
+  top: 120px;
+  left: 40px;
+  /* display: flex; */
+}
+
+.profPic {
+  /* background-color: rgba(255, 255, 255, 0.671); */
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+  margin: 20px 20px;
+
+}
+
+.profInfo {
+  background-color: rgba(255, 255, 255, 0.671);
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px;
+  height: 71%;
+  justify-content: flex-start;
+  
+}
+
+.profGroup {
+  margin: 20px;
+  text-align: start;
+}
+
+.profItem {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.editButton {
+  width: 82%;
+  height: 60px;
+  background: linear-gradient(rgb(119, 0, 255), rgb(215, 159, 253));
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  border-radius: 10px;
+  bottom: 10px;
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.editButton:hover {
+  background: linear-gradient(rgb(215, 159, 253), rgb(119, 0, 255));
+  /* transition: 0.4s; */
+}

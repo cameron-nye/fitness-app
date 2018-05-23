@@ -1,10 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400');
+
+.main {
+  font-family: 'Raleway', sans-serif;
+
+}
 .bio {
-  background-color: rgb(212, 212, 212);
-  float: right;
+  background-color: rgba(255, 255, 255, 0.671);
+  margin: 15px;
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 250px;
+  font-size: 18px;
+  padding: 5px;
+  align-content: space-around;
+  text-align: justify;
+  overflow: scroll;
 }
 
 .headshot {
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
+  float: left;
+  height: 125px;
+  width: 90px;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
 }
+
+.certs {
+  background-color: rgba(255, 255, 255, 0.671);
+  margin: 15px;
+  height: 100px;
+  border-radius: 10px;
+  padding: 20px;
+  list-style-type: circle;
+  list-style-position: outside;
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+}
+
+.certItem {
+  font-size: 18px;
+  text-align: start;
+  /* margin: 20px; */
+}
+
+h4 {
+  font-size: 30px;
+  text-align: start;
+
+}
+
+.barbell {
+  height: 200px;  
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px #000000;
+
+}
+
+.contact {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.671);
+  border-radius: 10px;
+  margin: 15px;
+  box-shadow: 0px 0px 5px 0px #000000;
+  border: 1px solid black;
+  height: 10%;
+  font-size: 26px;
+  display: block;
+  padding-top: 
+}
+
+@media (min-width: 415px) {
+  .bio {
+    height: 70vh;
+    width:60%;
+    line-height: 1.75;
+    font-size: 26px;
+    padding: 10px;
+  }
+
+  .headshot {
+    height: 375px;
+    width: 270px;
+    margin: 10px;
+    
+  }
+
+  .main {
+    padding: 25px;
+    height: 100vh;
+  }
+
+  .mainSplash {
+    display: flex;
+  }
+
+  .bio {
+    width: 60%;
+  }
+  .contact {
+    height: 10%;
+  }
+  
+  .rightSplash {
+    box-sizing: border-box;
+    width: 40%;
+    margin: 25px;
+    background-color: rgba(255, 255, 255, 0.671);
+    margin: 40px;
+    box-shadow: 0px 0px 5px 0px #000000;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
+  .certs {
+    height: 35%;
+  }
+
+  .certTitle {
+    font-size: 24px;
+  }
+
+  .certItem {
+    font-size: 26px;
+  }
+
+  h4 {
+    font: 26px;
+  }
+}
+
+

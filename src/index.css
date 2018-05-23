@@ -2,4 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url('https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Images-Cement-HD-Download-PIC-WPC007337.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }

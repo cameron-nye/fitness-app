@@ -29,9 +29,9 @@ class Nav extends Component {
             onClick={this.showNavFn}
           />
           <ul>
-            <Link to='/blog'><li>Blog</li></Link>
-            <Link to='/services'><li>Services</li></Link>
-            <a href={process.env.REACT_APP_LOGIN}><li>Login</li></a> 
+            <Link to='/blog'><li className='links'>Blog</li></Link>
+            <Link to='/services'><li className='links'>Services</li></Link>
+            <a href={process.env.REACT_APP_LOGIN}><li className='links'>Login</li></a> 
           </ul>
         </div>
       </div>

@@ -2,14 +2,16 @@ import React from 'react'
 import ProfDisplay from '../ProfDisplay/ProfDisplay'
 import Chart from '../Chart/Chart'
 import Goals from '../Goals/Goals'
+import './Profile.css'
 
 function Profile(){
   return (
-    <div>
-      <h1>Profile</h1>
+    <div className='profMain'>
       <ProfDisplay />
-      <Goals />
-      <Chart />
+      <div className='profRight'>
+        <Goals />
+        <Chart />
+      </div>
     </div>
   )
 }

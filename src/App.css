@@ -1,28 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400');
+
 .App {
   text-align: center;
+  
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.html {
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
+/* cement wallpaper https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Images-Cement-HD-Download-PIC-WPC007337.jpg */
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* barbell wallpaper
+https://www.t-nation.com/system/publishing/articles/10005529/original/6-Reasons-You-Should-Never-Open-a-Gym.png?1509471214 */
+

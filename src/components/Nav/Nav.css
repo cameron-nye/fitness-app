@@ -3,11 +3,15 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  background-color: aquamarine;
-  height: 50px;
+  background: linear-gradient(rgb(119, 0, 255), rgb(215, 159, 253));
+  height: 80px;
   align-items: center;
   font-family: 'Raleway', sans-serif;
-
+  border-bottom: 2px solid black;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 .menuButton {
@@ -18,8 +22,8 @@
 }
 
 .title {
-  font-size: 30px;
-  margin-left: 10px;
+  font-size: 50px;
+  margin-left: 30px;
   letter-spacing: 3px;
   font-weight: 500;
   font-style: italic;
@@ -30,32 +34,31 @@
  width: 40%;
  margin-right: 10px;
  justify-content: flex-end;
+ height: 100%;
+ align-items: center;
 
 }
 
 .navButtons > ul {
-  background-color: blanchedalmond;
-  height: 40px;
+  height: 80%;
   width: 100%;
   display: block;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 22px;
-}
-
-li {
-  display: flex;
-  height: 100%;
-  justify-content: space-around;
-  align-items: center;
-
+  font-size: 30px;
 }
 
 a {
+   width: 30%;
+   height: 100%;
    color: inherit; 
    text-decoration: none;
+   align-items: center;
+   display: flex;
+   justify-content: space-around;
 } 
+
 
 @media (max-width: 414px){
   .menuButton{
@@ -69,4 +72,7 @@ a {
   .navButtons {
     margin-right: 0px;
   }
+  /* .nav {
+    position: fixed;
+  } */
 }
