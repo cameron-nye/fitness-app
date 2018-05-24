@@ -36,9 +36,10 @@ function Home() {
           />
           <div className="certs">
             <div className='certTitle'>Certifications:</div>
+            <hr/>
             <li className="certItem">National Academy of Sports Medicine</li>
             <li className="certItem">American College of Sports Medicine</li>
-            <li className="certItem">National Strength and Conditioning Association</li>
+            <li className="certItem">National Exercise and Sports Training Association</li>
           </div>
         </div>
       </div>

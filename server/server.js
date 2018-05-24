@@ -71,7 +71,7 @@ app.get('/auth/me', (req, res) => {
   if(req.user){
     res.status(200).send(req.user)
   } else {
-    res.status(401).send(alert('Please login'))
+    res.status(401).send('Please login')
   }
 })
 
