@@ -26,7 +26,7 @@ class Nav extends Component {
     });
   }
   render() {
-    console.log(this.state)
+    // console.log(this.props)
     return (
       <div className="nav">
         <Link to="/">
@@ -46,7 +46,7 @@ class Nav extends Component {
             <Link to="/services">
               <li className="links">Services</li>
             </Link>
-            {!this.props.user.id ? <a href={process.env.REACT_APP_LOGIN} /*onClick={this.showProfFn}*/>
+            {!this.props.user.id ? <a href={process.env.REACT_APP_LOGIN} >
               <li className="links">Login</li></a> : <Link to='/profile' ><li className='links'>Profile</li></Link>}
           </ul>
         </div>
@@ -57,7 +57,7 @@ class Nav extends Component {
 
 function mapStateToProps(state){
   return{
-    user: state.user
+    user: state.userReducer.user
   }
 }
 

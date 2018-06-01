@@ -5,6 +5,8 @@ const express =  require('express')
     , passport = require('passport')
     , Auth0Session = require('passport-auth0')
     , session = require('express-session')
+    , gc = require('./goalController')
+    , uc = require('./userController')
 
 const {
   SERVER_PORT,
@@ -17,6 +19,7 @@ const {
 } = process.env
 
 const app = express()
+app.use(bodyParser.json())
 
 massive(CONNECTION_STRING)
   .then((db) => {
@@ -74,5 +77,12 @@ app.get('/auth/me', (req, res) => {
     res.status(401).send('Please login')
   }
 })
+app.get('/goals', gc.getUserGoals)
+app.post('/goals/new', gc.newGoal)
+app.delete('/goals/delete/:id', gc.deleteGoal)
+app.put('/goals/update/:goal_id', gc.updateGoal)
+app.put('/user/update/:id', uc.editAge)
+app.put('/user/update_height/:id', uc.editHeight)
+app.put('/user/update_weight/:id', uc.editWeight)
 
-app.listen(SERVER_PORT, console.log(`🎸 Lets rock on port ${SERVER_PORT} 🎸`))
+app.listen(SERVER_PORT, console.log(`Docked at port ${SERVER_PORT} 🎸`))

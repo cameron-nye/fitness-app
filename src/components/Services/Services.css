@@ -4,7 +4,7 @@
   margin: 40px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 3px;
   height: 50vh;
   display: flex;
   justify-content: space-evenly;
@@ -21,7 +21,7 @@
   margin: 15px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px; 
+  border-radius: 3px; 
   padding: 10px;
   line-height: 1.6;
 }
@@ -37,7 +37,7 @@
 hr {
   border: 0;
   height: 2px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgb(215, 159, 253, 0), rgba(119, 0, 255, 0.9), rgb(215, 159, 2, 0));
 }
 
 .servText {
@@ -53,10 +53,12 @@ hr {
   background: linear-gradient(rgb(119, 0, 255), rgb(215, 159, 253));
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 3px;
   bottom: 10px;
   font-size: 20px;
   margin-top: 25px;
+  outline: none;
+
 }
 
 .subButton:hover {
@@ -69,7 +71,7 @@ hr {
   margin-top: 0px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 3px;
   height: 30vh;
   display: flex;
   align-items: center;
@@ -81,7 +83,7 @@ hr {
   margin: 15px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px; 
+  border-radius: 3px; 
   height: 90%;
   width: 30%;
 
@@ -91,7 +93,7 @@ hr {
   margin: 15px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px; 
+  border-radius: 3px; 
   height: 90%;
   width: 30%;
 }
@@ -100,7 +102,7 @@ hr {
   margin: 15px;
   box-shadow: 0px 0px 5px 0px #000000;
   border: 1px solid black;
-  border-radius: 10px; 
+  border-radius: 3px; 
   height: 90%;
   width: 30%;
 }

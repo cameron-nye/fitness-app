@@ -1,0 +1,63 @@
+
+.entryMain {
+  height: 10%;
+  width: 90%;
+  /* background: aqua; */
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+}
+
+/* .entry {
+  display: flex;
+  flex-direction: inherit;
+  align-items: center;
+} */
+
+.button {
+  background: rgb(186, 125, 255);
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  width: 70px;
+}
+
+.button:hover {
+  background: rgb(51,51,51);
+  color: rgb(198, 152, 250)
+}
+
+.deleteB {
+  background: rgb(255, 49, 118);
+  border-radius: 3px;
+  border: 1px solid black;
+  outline: none;
+  width: 70px;
+}
+
+.cancelButton {
+  width: 70px;
+  outline: none;
+  background: rgb(116, 207, 157);
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.deleteB:hover {
+  background: rgb(51,51,51);
+  color: rgb(255,0,85)
+}
+
+.buttonGroup {
+  /* margin: 100px; */
+}
+
+.editInput {
+  width: 60%;
+  height: 20px;
+  border-radius: 3px;
+}
+
