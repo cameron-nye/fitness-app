@@ -2,12 +2,24 @@ import axios from 'axios'
 
 const initialState = {
   user: {},
+  // ageInput: '',
+  // heightInput: '',
+  // weightInput: ''
 }
 
+// const AGE_INPUT = 'AGE_INPUT'
 const GET_USER = 'GET_USER'
 const EDIT_AGE = 'EDIT_AGE'
 const EDIT_HEIGHT = 'EDIT_HEIGHT'
 const EDIT_WEIGHT = 'EDIT_WEIGHT'
+
+// export function handleAgeInput(input){
+//   console.log(input)
+//   return {
+//     type: AGE_INPUT,
+//     payload: input
+//   }
+// }
 
 export function getUser(){
   let userData = axios.get('/auth/me')
@@ -69,6 +81,8 @@ export default function userReducer(state=initialState, action){
       return Object.assign({}, state, {user_height: action.payload})
     case EDIT_WEIGHT:
       return Object.assign({}, state, {user_weight: action.payload})
+    // case AGE_INPUT:
+    //   return Object.assign({}, state, {ageInput: action.payload})
     default:
       return state
   }

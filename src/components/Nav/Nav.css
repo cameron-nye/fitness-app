@@ -3,7 +3,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(rgb(119, 0, 255), rgb(215, 159, 253));
+  background: linear-gradient(#7700ff, #d79ffd);
   height: 80px;
   align-items: center;
   font-family: 'Raleway', sans-serif;
@@ -71,8 +71,10 @@ a {
   }
   .navButtons {
     margin-right: 0px;
+    color: #c2bfbf;
   }
   /* .nav {
     position: fixed;
   } */
 }
+

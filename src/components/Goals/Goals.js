@@ -80,7 +80,7 @@ class Goals extends Component{
         </div>
         <div className="entry">
           <input type="text"
-                // value={this.state.input}
+                value={this.props.goal}
                 className='input'
                 placeholder='New Goal'
                 onChange={(e) => this.props.goalInput(e.target.value)}/>

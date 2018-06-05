@@ -36,7 +36,7 @@ export function goalInput(goal){
 export function clearInput(){
   return {
     type: CLEAR_INPUT,
-    payload: initialState.goal
+    payload: ''
   }
 }
 

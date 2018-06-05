@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/userReducer'
 import {editAge, editHeight, editWeight} from '../../redux/userReducer'
+import {handleDate, handleType, handleTime, submitWorkout, getWorkouts} from '../../redux/workoutReducer'
 import Button from '@material-ui/core/DialogContent'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -84,7 +85,8 @@ class ProfDisplay extends Component{
 
   render(){
     let {user_name, picture, user_age, user_height, user_weight} = this.props.user
-    // console.log(this.state);
+    let {workoutDate, workoutType, workoutTime} =  this.props
+    // console.log(this.props);
     // console.log(this.state.toggleWorkout);
     
     return (
@@ -96,9 +98,11 @@ class ProfDisplay extends Component{
             this.state.toggleEdit ?
           <div className="profGroup">
             <div className='profItem'>Age: <input 
-              type="text"                                                                         className='editProfInput'
+              type="text"                                                           
+              className='editProfInput'
               placeholder={user_age} 
-              onChange={this.handleAgeInput}/>
+              onChange={this.handleAgeInput}
+              />
             </div>
             <div className='profItem'>Height: <input 
               type="text" 
@@ -156,8 +160,8 @@ class ProfDisplay extends Component{
                 id="date"
                 label="Workout Date"
                 type="date"
-                value = {this.state.date}
-                onChange = {this.handleDate}
+                // value = {this.props.workoutType}
+                onChange = {(e) => this.props.handleDate(e.target.value)}
                 fullWidth
                 />
                 {/* <div> */}
@@ -174,8 +178,8 @@ class ProfDisplay extends Component{
               <FormControl fullWidth>
                 <InputLabel htmlFor="role-simple">Type</InputLabel>
                 <Select
-                  onChange={this.handleType}
-                  value={this.state.type}
+                  onChange={(e) => this.props.handleType(e.target.value)}
+                  value={this.props.workoutType}
                   inputProps={{
                   name: 'Workout Type',
                   }}
@@ -183,8 +187,8 @@ class ProfDisplay extends Component{
                   >
                   <MenuItem value="Cardio">Cardio</MenuItem>
                   <MenuItem value="Weight Training">Weight Training</MenuItem>
-                  <MenuItem value="Stretching">Stretching/Yoga</MenuItem>
-                  <MenuItem value="Team">Team Sports</MenuItem>
+                  <MenuItem value="Yoga/Stretching">Yoga/Stretching</MenuItem>
+                  <MenuItem value="Team Sports">Team Sports</MenuItem>
                   <MenuItem value="Corrective">Corrective</MenuItem>
                   <MenuItem value="Resistance">Resistance</MenuItem>
                 </Select>
@@ -192,6 +196,8 @@ class ProfDisplay extends Component{
               <TextField
                 // autoFocus
                 margin="dense"
+                value={this.props.workoutTime}
+                onChange={(e) => this.props.handleTime(e.target.value)}
                 id="text"
                 label="Time Spent (in minutes)"
                 type="text"
@@ -202,8 +208,13 @@ class ProfDisplay extends Component{
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
+            <Button onClick={() => {
+              this.props.submitWorkout(workoutDate, workoutType, workoutTime)
+              this.handleClose()
+              }
+            } 
+              color="primary">
+              Submit
             </Button>
           </DialogActions>
 
@@ -216,8 +227,11 @@ class ProfDisplay extends Component{
 
 function mapStateToProps(state){
   return{
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    workoutDate: state.workoutReducer.workoutDate,
+    workoutType: state.workoutReducer.workoutType,
+    workoutTime: state.workoutReducer.workoutTime
   }
 }
 
-export default connect(mapStateToProps, {getUser, editAge, editHeight, editWeight})(ProfDisplay)
+export default connect(mapStateToProps, {getUser, editAge, editHeight, editWeight, handleDate, handleType, handleTime, submitWorkout, getWorkouts})(ProfDisplay)

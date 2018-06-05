@@ -7,6 +7,7 @@ const express =  require('express')
     , session = require('express-session')
     , gc = require('./goalController')
     , uc = require('./userController')
+    , wc = require('./workoutController')
 
 const {
   SERVER_PORT,
@@ -84,5 +85,7 @@ app.put('/goals/update/:goal_id', gc.updateGoal)
 app.put('/user/update/:id', uc.editAge)
 app.put('/user/update_height/:id', uc.editHeight)
 app.put('/user/update_weight/:id', uc.editWeight)
+app.post('/workout/new', wc.newWorkout)
+app.get('/workout', wc.getWorkouts)
 
 app.listen(SERVER_PORT, console.log(`Docked at port ${SERVER_PORT} 🎸`))
