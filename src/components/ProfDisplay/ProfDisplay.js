@@ -164,17 +164,6 @@ class ProfDisplay extends Component{
                 onChange = {(e) => this.props.handleDate(e.target.value)}
                 fullWidth
                 />
-                {/* <div> */}
-                {/* <DayPickerInput
-                  inputProps = {{ style: {
-                    width: '100%',
-                    fontSize: '16px',
-                    minHeight: '38px',
-                    textAlign: 'center',
-                    cursor: 'pointer'
-                  }}}
-                  />
-                </div> */}
               <FormControl fullWidth>
                 <InputLabel htmlFor="role-simple">Type</InputLabel>
                 <Select

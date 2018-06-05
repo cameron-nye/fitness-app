@@ -127,72 +127,108 @@ class Chart extends Component{
         // labels: this.props.workouts.map(workouts => workouts.date),
       datasets: [
         {
-          label: 'Cardio',
-          // data: cardio.map((workout) => workout.time_spent),
-          data: cardio.map(workout => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+          label: 'Workouts',
+          data: this.props.workouts.map((workout) => workout.time_spent),
+          backgroundColor: this.props.workouts.map((workout) => {
+            if(workout.workout_type === 'Cardio'){
+              return (
+                '#a250ff'
+              )
             }
-          }),
-          backgroundColor: '#a250ff',
-          borderColor: 'white',
-        },
-        {
-          label: 'Weight Training',
-          data: weightTraining.map((workout) => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+            if(workout.workout_type === 'Weight Training'){
+              return (
+                '#1e90ff'
+              )
             }
-          }),
-          backgroundColor: '#1e90ff',
-          borderColor: 'white'
-        },
-        {
-          label: 'Yoga/Stretching',
-          data: yoga.map((workout) => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+            if(workout.workout_type === 'Yoga/Stretching'){
+              return (
+                '#5effa6'
+              )
             }
-          }),
-          backgroundColor: '#5effa6',
-          borderColor: 'white'
-        },
-        {
-          label: 'Team Sports',
-          data: teamSports.map((workout) => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+            if(workout.workout_type === 'Team Sports'){
+              return (
+                '#ffac3e'
+              )
             }
-          }),
-          backgroundColor: '#ffac3e',
-          borderColor: 'white'
-        },
-        {
-          label: 'Resistance',
-          data: resistance.map((workout) => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+            if(workout.workout_type === 'Resistance'){
+              return (
+                '#ff3e4e'
+              )
             }
-          }),
-          backgroundColor: '#ff3e4e',
-          borderColor: 'white'
-        },
-        {
-          label: 'Corrective',
-          data: corrective.map((workout) => {
-            return {
-              x: workout.date,
-              y: workout.time_spent
+            if(workout.workout_type === 'Corrective'){
+              return (
+                '#fffc3e'
+              )
             }
-          }),
-          backgroundColor: '#fffc3e',
-          borderColor: 'white'
-        },
+          })
+        }
+        // {
+        //   label: 'Cardio',
+        //   // data: cardio.map((workout) => workout.time_spent),
+        //   data: cardio.map(workout => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#a250ff',
+        //   borderColor: 'white',
+        // },
+        // {
+        //   label: 'Weight Training',
+        //   data: weightTraining.map((workout) => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#1e90ff',
+        //   borderColor: 'white'
+        // },
+        // {
+        //   label: 'Yoga/Stretching',
+        //   data: yoga.map((workout) => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#5effa6',
+        //   borderColor: 'white'
+        // },
+        // {
+        //   label: 'Team Sports',
+        //   data: teamSports.map((workout) => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#ffac3e',
+        //   borderColor: 'white'
+        // },
+        // {
+        //   label: 'Resistance',
+        //   data: resistance.map((workout) => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#ff3e4e',
+        //   borderColor: 'white'
+        // },
+        // {
+        //   label: 'Corrective',
+        //   data: corrective.map((workout) => {
+        //     return {
+        //       x: workout.date,
+        //       y: workout.time_spent
+        //     }
+        //   }),
+        //   backgroundColor: '#fffc3e',
+        //   borderColor: 'white'
+        // },
       ]
     }
     let doughnutData = {
