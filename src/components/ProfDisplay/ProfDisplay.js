@@ -80,7 +80,7 @@ class ProfDisplay extends Component{
   render(){
     let {user_name, picture, user_age, user_height, user_weight} = this.props.user
     let {workoutDate, workoutType, workoutTime} =  this.props
-    console.log(this.props.user);
+    console.log(this.props);
     // console.log(this.state.toggleWorkout);
     
     return (

@@ -13,6 +13,8 @@ const express =  require('express')
 
 const {
   SERVER_PORT,
+  SUCCESS_REDIRECT,
+  FAILURE_REDIRECT,
   CONNECTION_STRING,
   SESSION_SECRET,
   DOMAIN,
@@ -25,6 +27,8 @@ const {
 
 
 const app = express()
+
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json())
 
 massive(CONNECTION_STRING)
@@ -76,7 +80,8 @@ passport.deserializeUser((id, done) => {
 
 app.get('/login', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/profile'
+  successRedirect: SUCCESS_REDIRECT,
+  failureRedirect: FAILURE_REDIRECT
 }))
 app.get('/auth/me', (req, res) => {
   if(req.user){
