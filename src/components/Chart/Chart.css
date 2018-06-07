@@ -34,3 +34,7 @@
   background: linear-gradient(rgb(215, 159, 253), rgb(119, 0, 255));
   /* transition: 0.4s; */
 }
+
+.graphB:active {
+  transform: translateY(1px);
+}

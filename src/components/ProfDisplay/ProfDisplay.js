@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/userReducer'
 import {editAge, editHeight, editWeight} from '../../redux/userReducer'
@@ -28,29 +29,15 @@ class ProfDisplay extends Component{
       ageInput: '', 
       heightInput: '',
       weightInput: '',
-      // type: '',
-      // date: ''
+
     }
     this.handleAgeInput = this.handleAgeInput.bind(this)
     this.handleHeightInput = this.handleHeightInput.bind(this)
     this.handleWeightInput = this.handleWeightInput.bind(this)
     this.handleClickOpen = this.handleClickOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
-    // this.handleType = this.handleType.bind(this)
+    this.getProfInfo = this.getProfInfo.bind(this)
   }
-
-
-  // handleType(e){
-  //   this.setState({
-  //     type: e.target.value
-  //   })
-  // }
-
-  // handleDate(e){
-  //   this.setState({
-  //       date: e.target.value
-  //   })
-  // }
 
   componentDidMount(){
     this.props.getUser()
@@ -82,11 +69,18 @@ class ProfDisplay extends Component{
     })
   }
 
+  getProfInfo(){
+    axios.get('/user')
+      .then((res) => {
+        console.log(res.data)
+      })
+  }
+
 
   render(){
     let {user_name, picture, user_age, user_height, user_weight} = this.props.user
     let {workoutDate, workoutType, workoutTime} =  this.props
-    // console.log(this.props);
+    console.log(this.props.user);
     // console.log(this.state.toggleWorkout);
     
     return (
@@ -122,6 +116,7 @@ class ProfDisplay extends Component{
                 this.props.editAge(this.state.ageInput, this.props.user.id)
                 this.props.editHeight(this.state.heightInput, this.props.user.id)
                 this.props.editWeight(this.state.weightInput, this.props.user.id)
+                // this.props.getUser()
               }
             }>Save</button>
               <button className='cancelB' onClick={() => this.setState({toggleEdit: false})}>Cancel</button>
@@ -194,6 +189,7 @@ class ProfDisplay extends Component{
                 />
           </DialogContent>
           <DialogActions>
+
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
@@ -203,7 +199,9 @@ class ProfDisplay extends Component{
               }
             } 
               color="primary">
-              Submit
+              <div className="submit">
+                Submit
+              </div>
             </Button>
           </DialogActions>
 
@@ -217,6 +215,9 @@ class ProfDisplay extends Component{
 function mapStateToProps(state){
   return{
     user: state.userReducer.user,
+    user_age: state.userReducer.user_age,
+    user_height: state.userReducer.user_height,
+    user_weight: state.userReducer.user_weight,
     workoutDate: state.workoutReducer.workoutDate,
     workoutType: state.workoutReducer.workoutType,
     workoutTime: state.workoutReducer.workoutTime

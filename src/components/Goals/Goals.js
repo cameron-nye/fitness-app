@@ -58,7 +58,7 @@ class Goals extends Component{
   }
 
   render(){
-    // console.log(this.props.user)
+    // console.log(this.props.goal)
     let goalsDisplay = this.props.goals.map((goal, i) => {
       return (
         <div key={goal + i}><GoalEntry goal={goal.goal}

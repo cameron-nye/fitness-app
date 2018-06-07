@@ -154,7 +154,11 @@ h4 {
 
 .contactB:hover {
   background: linear-gradient(rgb(215, 159, 253), rgb(119, 0, 255));
-  transition: 0.4s 
+  /* transition: 0.4s  */
+}
+
+.contactB:active {
+  transform: translateY(1px);
 }
 
 

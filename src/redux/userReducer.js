@@ -34,9 +34,9 @@ export function getUser(){
 
 export function editAge(age, id){
   let userAge = axios
-    .put(`/user/update/${id}`, {age})
+    .put(`/user/update_age/${id}`, {age})
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       return res.data
     })
   return {
@@ -75,11 +75,11 @@ export default function userReducer(state=initialState, action){
   switch(action.type){
     case GET_USER + '_FULFILLED':
       return Object.assign({}, state, {user: action.payload})
-    case EDIT_AGE:
+    case EDIT_AGE + '_FULFILLED':
       return Object.assign({}, state, {user_age: action.payload})
-    case EDIT_HEIGHT:
+    case EDIT_HEIGHT + '_FULFILLED':
       return Object.assign({}, state, {user_height: action.payload})
-    case EDIT_WEIGHT:
+    case EDIT_WEIGHT + '_FULFILLED':
       return Object.assign({}, state, {user_weight: action.payload})
     // case AGE_INPUT:
     //   return Object.assign({}, state, {ageInput: action.payload})

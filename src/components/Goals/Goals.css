@@ -53,6 +53,10 @@
   color: rgb(198, 152, 250)
 }
 
+.Subbutton:active {
+  transform: translateY(3px);
+}
+
 hr {
   border: 0;
   width: 90%;

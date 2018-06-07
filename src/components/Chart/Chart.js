@@ -25,62 +25,16 @@ class Chart extends Component{
 
     // BAR GRAPH DATA
 
-    let cardio = this.props.workouts.filter((workout) => workout.workout_type === 'Cardio')
+    // let cardio = this.props.workouts.filter((workout) => workout.workout_type === 'Cardio')
     
-    let weightTraining = this.props.workouts.filter((workout) => workout.workout_type === 'Weight Training')
-    let yoga = this.props.workouts.filter((workout) => workout.workout_type === 'Yoga/Stretching')
-    let teamSports = this.props.workouts.filter((workout) => workout.workout_type === 'Team Sports')
-    let resistance = this.props.workouts.filter((workout) => workout.workout_type === 'Resistance')
-    let corrective = this.props.workouts.filter((workout) => workout.workout_type === 'Corrective')
+    // let weightTraining = this.props.workouts.filter((workout) => workout.workout_type === 'Weight Training')
+    // let yoga = this.props.workouts.filter((workout) => workout.workout_type === 'Yoga/Stretching')
+    // let teamSports = this.props.workouts.filter((workout) => workout.workout_type === 'Team Sports')
+    // let resistance = this.props.workouts.filter((workout) => workout.workout_type === 'Resistance')
+    // let corrective = this.props.workouts.filter((workout) => workout.workout_type === 'Corrective')
     
     // PIE CHART DATA
   
-
-
-      // let workoutTotals = this.props.workouts.reduce((total, workout) => {
-        
-      //   if(workout.workout_type === 'Cardio'){
-          
-      //   } else if(workout.workout_type === 'Weight Training'){
-
-      //   } else if(workout.workout_type === 'Yoga/Stretching'){
-
-      //   } else if(workout.workout_type === 'Team Sports'){
-
-      //   } else if(workout.workout_type === 'Resistance'){
-
-      //   } else if(workout.workout_type === 'Corrective'){
-
-      //   }
-      //   return total
-      // }, [])
-
-      // let workoutTotals = this.props.workouts.map((workout, i) => {
-      //   let total
-      //   let totalArr = []
-      //   if(workout[i].workout_type === 'Cardio'){
-      //     totalArr.push(total += workout[i].time_spent)
-      //   } 
-      //   if(workout.workout_type === 'Weight Training'){
-
-      //   } 
-      //   if(workout.workout_type === 'Yoga/Stretching'){
-
-      //   } 
-      //   if(workout.workout_type === 'Team Sports'){
-
-      //   } 
-      //   if(workout.workout_type === 'Resistance'){
-
-      //   } 
-      //   if(workout.workout_type === 'Corrective'){
-
-      //   }
-      //   return total
-      // })
-
-      // console.log(workoutTotals);
-
       let cardioGroup = this.props.workouts.reduce((total, workout) => {
         if(workout.workout_type === 'Cardio'){
           total += workout.time_spent
@@ -155,7 +109,7 @@ class Chart extends Component{
                 '#ff3e4e'
               )
             }
-            if(workout.workout_type === 'Corrective'){
+            else {
               return (
                 '#fffc3e'
               )

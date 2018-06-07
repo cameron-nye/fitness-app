@@ -30,6 +30,10 @@
   color: rgb(198, 152, 250)
 }
 
+.button:active {
+  /* transform: translateY(3px); */
+}
+
 .deleteB {
   background: rgb(255, 49, 118);
   border-radius: 3px;

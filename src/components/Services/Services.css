@@ -107,8 +107,8 @@ hr {
   width: 30%;
 }
 
-/* .pic {
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-} */
+.price {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}

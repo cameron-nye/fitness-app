@@ -66,6 +66,10 @@
   /* transition: 0.4s; */
 }
 
+.editButton:active {
+  transform: translateY(1px);
+}
+
 .editProfInput {
   width: 30%;
 }
@@ -98,4 +102,8 @@
 
 .buttonGroup {
   /* margin-top: 150px; */
+}
+
+.submit {
+  padding-top: 24px;
 }

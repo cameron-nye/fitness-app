@@ -27,10 +27,23 @@ module.exports = {
     const {weight} = req.body
     db.update_user_weight([weight, id])
       .then((weight) => {
+        // console.log(weight)
         res.status(200).send(weight)
       })
       .catch(() => {
         res.status(500).send('Error updating weight')
       })
+  },
+  getProfInfo: (req, res, next) => {
+    const db = req.app.get('db')
+    const {id} = req.user
+    db.get_prof_info([id])
+      .then(() => {
+        res.status(200).send(req.user)
+      })
+      .catch(() => {
+        res.status(500).send('Error retrieving profile info')
+      })
   }
 }
+

@@ -191,7 +191,9 @@ class Home extends Component {
               }
             } 
               color="primary">
-              Submit
+              <div className="submit">
+                Submit
+              </div>
             </Button>
           </DialogActions>
         </Dialog>

@@ -9,6 +9,7 @@ const express =  require('express')
     , uc = require('./userController')
     , wc = require('./workoutController')
     , nodemailer = require('nodemailer')
+    , stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const {
   SERVER_PORT,
@@ -71,6 +72,8 @@ passport.deserializeUser((id, done) => {
   })
 })
 
+//ENDPOINTS
+
 app.get('/login', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
   successRedirect: 'http://localhost:3000/#/profile'
@@ -86,7 +89,8 @@ app.get('/goals', gc.getUserGoals)
 app.post('/goals/new', gc.newGoal)
 app.delete('/goals/delete/:id', gc.deleteGoal)
 app.put('/goals/update/:goal_id', gc.updateGoal)
-app.put('/user/update/:id', uc.editAge)
+app.get('/user', uc.getProfInfo)
+app.put('/user/update_age/:id', uc.editAge)
 app.put('/user/update_height/:id', uc.editHeight)
 app.put('/user/update_weight/:id', uc.editWeight)
 app.post('/workout/new', wc.newWorkout)
@@ -122,13 +126,44 @@ app.post('/email', (req, res, next) => {
 res.sendStatus(201);
 })
 
-// transporter.sendMail(message, (error, info) => {
-//   if(error){
-//     return console.log(error)
-//   } else {
-//     console.log('The message was sent')
-//   }
-//   transporter.close()
-// })
+// STRIPE
+
+app.post('/api/payment', function(req, res, next){
+  // convert amount to pennies
+  const amountArray = req.body.amount.toString().split('');
+  const pennies = [];
+  for (var i = 0; i < amountArray.length; i++) {
+    if(amountArray[i] === ".") {
+      if (typeof amountArray[i + 1] === "string") {
+        pennies.push(amountArray[i + 1]);
+      } else {
+        pennies.push("0");
+      }
+      if (typeof amountArray[i + 2] === "string") {
+        pennies.push(amountArray[i + 2]);
+      } else {
+        pennies.push("0");
+      }
+        break;
+    } else {
+        pennies.push(amountArray[i])
+    }
+  }
+  const convertedAmt = parseInt(pennies.join(''));
+
+  const charge = stripe.charges.create({
+      amount: convertedAmt, // amount in cents, again
+      currency: 'usd',
+      source: req.body.token.id,
+      description: 'Test charge from react app'
+  }, function(err, charge) {
+      if (err) return res.sendStatus(500)
+      return res.sendStatus(200);
+      // if (err && err.type === 'StripeCardError') {
+      //   // The card has been declined
+      // }
+  });
+});
+
 
 app.listen(SERVER_PORT, console.log(`Docked at port ${SERVER_PORT} 🎸`))
