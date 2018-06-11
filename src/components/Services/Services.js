@@ -50,12 +50,7 @@ class Services extends Component {
             <div className="servTitle">Programming</div>
             <hr />
             <div className="servText">
-              It takes more than pure sweat to achieve your goals. Let me create
-              a workout plan for you that’s tailored to your body now — and
-              moves you forward to where you want to go. Grounded in science and
-              crafted by experts, your personal training program takes the
-              guesswork out of working out, so you can achieve more with the
-              time you have.
+            Kick start your new year with this 12-week fitness program designed by ACE, to build total body strength, enhance cardiovascular endurance, gain muscular definition, lose weight, improve health and increase energy. It’s a great beginner-level program for those new to exercise, or it can be used as a valuable dynamic warm-up for the more advanced. Here we’re giving you Phase I of the program, the first 30 days, so you have a week-by-week plan that’s easy to follow and can be done in the comfort of your own home. Simply use it as a roadmap to a healthier, happier you!
             </div>
             <div className="price">$200/month</div>
             <StripeCheckout

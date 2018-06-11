@@ -14,8 +14,6 @@ import headshot2 from '../../pictures/headshot2.jpg'
 const style = {
   cursor:'pointer',
   backgroundColor: 'lightgray',
-  // font: 
-
 }
 
 class Home extends Component {
