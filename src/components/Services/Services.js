@@ -13,6 +13,7 @@ class Services extends Component {
         alert('Thanks for your purchase')
     });
   } 
+  
 
   onToken1 = (token) => {
     token.card = void 0;

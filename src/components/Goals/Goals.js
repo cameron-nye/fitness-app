@@ -14,27 +14,11 @@ class Goals extends Component{
     }
     this.submitGoal = this.submitGoal.bind(this)
     this.clearInput = this.clearInput.bind(this)
-    // this.getAllGoals = this.getAllGoals.bind(this)
   }
 
   componentDidMount(){
     this.props.getGoals()
   }
-
-  // getAllGoals(){
-  //   axios.get('/goals') 
-  //     .then((res) => {
-  //       this.setState({
-  //         goals: res.data
-  //       })
-  //     })
-  // }
-
-  // handleInput(e){
-  //   this.setState({
-  //     input: e.target.value
-  //   })
-  // }
 
   submitGoal(){
     // console.log(this.props.goal)

@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/userReducer'
-import {editAge, editHeight, editWeight} from '../../redux/userReducer'
+import {editAge, editHeight, editWeight, handleAge, handleHeight, handleWeight} from '../../redux/userReducer'
 import {handleDate, handleType, handleTime, submitWorkout, getWorkouts} from '../../redux/workoutReducer'
 import Button from '@material-ui/core/DialogContent'
 import Dialog from '@material-ui/core/Dialog';
@@ -18,7 +17,10 @@ import FormControl from '@material-ui/core/FormControl';
 // import DayPickerInput from 'react-day-picker/DayPickerInput'
 import './ProfDisplay.css'
 
-
+const style = {
+  cursor:'pointer',
+  backgroundColor: 'lightgray',
+}
 
 class ProfDisplay extends Component{
   constructor(){
@@ -26,17 +28,16 @@ class ProfDisplay extends Component{
     this.state = {
       toggleEdit: false,
       open: false,
-      ageInput: '', 
-      heightInput: '',
-      weightInput: '',
-
+      profOpen: false,
+      // ageInput: '', 
+      // heightInput: '',
+      // weightInput: '',
     }
-    this.handleAgeInput = this.handleAgeInput.bind(this)
-    this.handleHeightInput = this.handleHeightInput.bind(this)
-    this.handleWeightInput = this.handleWeightInput.bind(this)
+    // this.handleAgeInput = this.handleAgeInput.bind(this)
+    // this.handleHeightInput = this.handleHeightInput.bind(this)
+    // this.handleWeightInput = this.handleWeightInput.bind(this)
     this.handleClickOpen = this.handleClickOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
-    this.getProfInfo = this.getProfInfo.bind(this)
   }
 
   componentDidMount(){
@@ -46,48 +47,30 @@ class ProfDisplay extends Component{
   handleClickOpen = () => {
     this.setState({ open: true });
   };
+  handleClickProfOpen = () => {
+    this.setState({ profOpen: true });
+  };
 
   handleClose = () => {
     this.setState({ open: false });
   };
-
-  handleAgeInput(e){
-    this.setState({
-      ageInput: e.target.value
-    })
-  }
-
-  handleHeightInput(e){
-    this.setState({
-      heightInput: e.target.value
-    })
-  }
-
-  handleWeightInput(e){
-    this.setState({
-      weightInput: e.target.value
-    })
-  }
-
-  getProfInfo(){
-    axios.get('/user')
-      .then((res) => {
-        console.log(res.data)
-      })
-  }
+  handleProfClose = () => {
+    this.setState({ profOpen: false });
+  };
 
 
   render(){
     let {user_name, picture, user_age, user_height, user_weight} = this.props.user
     let {workoutDate, workoutType, workoutTime} =  this.props
-    console.log(this.props);
+    // console.log(this.props);
     // console.log(this.state.toggleWorkout);
+    console.log(this.state.toggleEdit)
     
     return (
       <div className='profCont'>
         <img className='profPic' src= {picture} alt=""/>
         <div className="profInfo">
-          <div className='profItem'>Name: {user_name} </div>
+          <div className='nameItem'>Name: {user_name} </div>
           {
             this.state.toggleEdit ?
           <div className="profGroup">
@@ -95,28 +78,33 @@ class ProfDisplay extends Component{
               type="text"                                                           
               className='editProfInput'
               placeholder={user_age} 
-              onChange={this.handleAgeInput}
+              onChange={(e) => {
+                this.props.handleAge(e.target.value)
+              }}
               />
             </div>
             <div className='profItem'>Height: <input 
               type="text" 
               className='editProfInput' 
               placeholder={user_height} 
-              onChange={this.handleHeightInput}/>
+              onChange={(e) => {
+                this.props.handleHeight(e.target.value)
+              }}/>
             </div>
             <div className='profItem'>Weight: <input 
               type="text" 
               className='editProfInput' 
-              onChange={this.handleWeightInput} 
+              onChange={(e) => {
+                this.props.handleWeight(e.target.value)
+              }} 
               placeholder={user_weight}/>
             </div>
             <div className="buttonGroup">
               <button className='saveB'onClick={() => {
                 this.setState({toggleEdit: false})
-                this.props.editAge(this.state.ageInput, this.props.user.id)
-                this.props.editHeight(this.state.heightInput, this.props.user.id)
-                this.props.editWeight(this.state.weightInput, this.props.user.id)
-                // this.props.getUser()
+                this.props.editAge(this.props.ageInput, this.props.user.id)
+                this.props.editHeight(this.props.heightInput, this.props.user.id)
+                this.props.editWeight(this.props.weightInput, this.props.user.id)
               }
             }>Save</button>
               <button className='cancelB' onClick={() => this.setState({toggleEdit: false})}>Cancel</button>
@@ -128,14 +116,97 @@ class ProfDisplay extends Component{
             <div className='profItem'>Height: {user_height} </div>
             <div className='profItem'>Weight: {user_weight}</div>
             <button className='editButton'
+                    onClick={this.handleClickProfOpen}
+                    >Edit Profile</button> 
+            
+            {/* ORIGINAL WORKING */}
+
+            {/* <button className='editButton'
                     onClick={() => {
                       this.setState({
                         toggleEdit: !this.state.toggleEdit
                       })}}
-                    >Edit Profile</button> 
+                    >Edit Profile</button>  */}
             <button className='editButton' onClick={this.handleClickOpen}>Add Workout Data</button>
           </div>
           }
+
+        {/* PROF EDIT MODAL */}
+
+        <div>
+        <Dialog
+          open={this.state.profOpen}
+          onClose={this.handleProfClose}
+          aria-labelledby="form-dialog-title"
+        >
+        <DialogTitle id="form-dialog-title">Edit Profile Information</DialogTitle>
+          <DialogContent>
+            {/* <DialogContentText>
+              Please enter the date you worked out, the type of workout you performed, and the time spent doing it
+            </DialogContentText> */}
+              <TextField
+                autoFocus
+                margin="dense"
+                placeholder={user_age}
+                id="Age"
+                label="Age"
+                type="Text"
+                // value = {user_age}
+                onChange={(e) => {
+                  this.props.handleAge(e.target.value)
+                }}
+                fullWidth
+                />
+              <TextField
+                margin="dense"
+                placeholder={user_height}
+                id="Height"
+                label="Height"
+                type="Text"
+                // value = {this.props.workoutType}
+                onChange={(e) => {
+                  this.props.handleHeight(e.target.value)
+                }}
+                />
+
+              <TextField
+                // autoFocus
+                margin="dense"
+                // value={this.props.workoutTime}
+                placeholder={user_weight}
+                onChange={(e) => {
+                  this.props.handleWeight(e.target.value)
+                }}
+                id="Weight"
+                label="Weight"
+                type="text"
+                fullWidth
+                />
+          </DialogContent>
+          <DialogActions>
+
+            <Button onClick={this.handleProfClose} style={style}color="primary">
+              Cancel
+            </Button>
+            <Button style={style} onClick={() => {
+                // this.setState({toggleEdit: false})
+                this.props.editAge(this.props.ageInput, this.props.user.id)
+                this.props.editHeight(this.props.heightInput, this.props.user.id)
+                this.props.editWeight(this.props.weightInput, this.props.user.id)
+                this.handleProfClose()
+              }
+            } 
+              color="primary">
+              <div className="submit">
+                Submit
+              </div>
+            </Button>
+          </DialogActions>
+        </Dialog>
+        </div>
+
+
+
 
         </div>
         <Dialog
@@ -190,10 +261,10 @@ class ProfDisplay extends Component{
           </DialogContent>
           <DialogActions>
 
-            <Button onClick={this.handleClose} color="primary">
+            <Button style={style}onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() => {
+            <Button style={style}onClick={() => {
               this.props.submitWorkout(workoutDate, workoutType, workoutTime)
               this.handleClose()
               }
@@ -204,8 +275,6 @@ class ProfDisplay extends Component{
               </div>
             </Button>
           </DialogActions>
-
-
         </Dialog>
       </div>
     )
@@ -220,8 +289,11 @@ function mapStateToProps(state){
     user_weight: state.userReducer.user_weight,
     workoutDate: state.workoutReducer.workoutDate,
     workoutType: state.workoutReducer.workoutType,
-    workoutTime: state.workoutReducer.workoutTime
+    workoutTime: state.workoutReducer.workoutTime,
+    ageInput: state.userReducer.ageInput,
+    heightInput: state.userReducer.heightInput,
+    weightInput: state.userReducer.weightInput
   }
 }
 
-export default connect(mapStateToProps, {getUser, editAge, editHeight, editWeight, handleDate, handleType, handleTime, submitWorkout, getWorkouts})(ProfDisplay)
+export default connect(mapStateToProps, {getUser, editAge, editHeight, editWeight, handleDate, handleType, handleTime, submitWorkout, getWorkouts, handleAge, handleHeight, handleWeight})(ProfDisplay)

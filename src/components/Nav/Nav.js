@@ -30,7 +30,7 @@ class Nav extends Component {
     return (
       <div className="nav">
         <Link to="/">
-          <div className="title">Fitness App</div>
+          <div className="title">Athena Fitness</div>
         </Link>
         <div className="navButtons">
           <img
